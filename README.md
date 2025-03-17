@@ -1,6 +1,6 @@
-# AWS CHALLENGE - Airflow DAG for Attribution Analysis
+# Haensel AMS - Airflow DAG for DE Challenge
 
-This project is an Airflow DAG implementation designed to process and analyze attribution data. The DAG extracts data from a PostgreSQL database, processes it, and performs API calls for customer journey analysis. It then generates a channel report and saves the results back to the database.
+This project is an Airflow DAG implementation designed to process and analyze marketing customer journey data. The DAG extracts data from a PostgreSQL database, processes it, and performs API calls for customer journey analysis. It then generates a channel report and saves the results back to the database.
 
 ## Table of Contents
 1. [Overview](#overview)

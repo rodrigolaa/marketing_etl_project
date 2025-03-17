@@ -19,19 +19,19 @@ END_DATE = variables['END_DATE']
 # Postgres database varaibles
 table_name_customer_journey = 'attribution_customer_journey'
 table_name_channel_reporting = 'channel_reporting'
-schema_name = 'data_aws'
+schema_name = 'data_ihc'
 conflict_columns = ['conversion_id', 'session_id']
 conflict_columns_channel_reporting = ['channel_name', 'date']
 
 
 @dag(
-    dag_id='AWS_CHALLENGE',
+    dag_id='IHC_CHALLENGE',
     schedule='0 9,15 * * *',
     start_date=datetime(2022, 10, 14),
     catchup=False,
     tags=['JOB_INTERVIEW']
 )
-def aws_challenge():
+def ihc_challenge():
     
     @task()
     def extract_data(start_date, end_date):
@@ -214,4 +214,4 @@ def aws_challenge():
     api_results = call_api.expand(batch=batches)
     api_results >> create_channel_report(extracted_data)
     
-aws_challenge()
+ihc_challenge()
