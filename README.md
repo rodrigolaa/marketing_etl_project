@@ -55,9 +55,9 @@ The following hard coded variables are required to run the DAG:
 - `conflict_columns`: Columns used as primary key (PK) in the **table_name_customer_journey** table.
 - `conflict_columns_channel_reporting`: Columns used as primary key (PK) in the **table_name_channel_reporting** table.
 
-![postgres_schema_table_names](assets\images\postgres_schema_table_names.png)
+![postgres_schema_table_names](assets/images/postgres_schema_table_names.png)
 
-![postgres_db_structure](assets\images\postgres_db_structure.png)
+![postgres_db_structure](assets/images/postgres_db_structure.png)
 
 ### Postgress Airflow Connection
 - Configure under Airflow UI > Admin > Connections
@@ -66,11 +66,11 @@ The following hard coded variables are required to run the DAG:
 - Database (In this case I created a new DB called challenge, but the normal would be the Public)
 - Login and Password (as defined by user in the moment to configure the Postgres DB)
 
-![postgres_airflow_conn](assets\images\postgres_airflow_conn.png)
+![postgres_airflow_conn](assets/images/postgres_airflow_conn.png)
 
 # DAG Workflow
 
-![airflow_tasks_dependencies](assets\images\airflow_tasks_dependencies.png)
+![airflow_tasks_dependencies](assets/images/airflow_tasks_dependencies.png)
 
 ## Data Extraction (extract_data):
 
@@ -98,7 +98,7 @@ Processes the extracted data and prepares it for API consumption by structuring 
 This step optimizes the data structure for API calls, considering both the limitations of a free API account and the standard API constraints. Efficient batch creation is crucial to retain accuracy and performance.
 
 First, the function identifies any conversion_id with more than 100 associated sessions, since this exceeds the API limit. Fortunately, in our dataset, the highest number of sessions for a single conversion was 37.
-![example_count_session_per_conv_id](assets\images\example_count_session_per_conv_id.png)
+![example_count_session_per_conv_id](assets/images/example_count_session_per_conv_id.png)
 
 Next, it creates batches of up to 200 sessions, ensuring that all sessions related to a specific conversion_id remain in the same batch. This preserves the data's integrity and reliability.
 
@@ -124,3 +124,4 @@ Generates aggregated channel performance reports using extracted data and API re
 - Saves the final report in the channel_reporting table, ensuring up-to-date marketing insights.
 
 This step provides a data-driven view of marketing channel efficiency, enabling better decision-making.
+A full channel_report can be found [here](channel_reporting.csv).
